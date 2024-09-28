@@ -1,3 +1,18 @@
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+out/
+misc.xml
+modules.xml
+runConfigurations.xml
+uiDesigner.xml
+vcs.xml
+
+# Hidden files created by the IDE
+.name
+
+
 # Compiled class file
 *.class
 
@@ -25,3 +40,4 @@ replay_pid*
 
 #MACOS
 .DS_Store
+
