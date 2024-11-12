@@ -41,3 +41,15 @@ replay_pid*
 #MACOS
 .DS_Store
 
+# Maven output directories
+/target/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Maven Wrapper files
+.mvn/
+mvnw
+mvnw.cmd
+
