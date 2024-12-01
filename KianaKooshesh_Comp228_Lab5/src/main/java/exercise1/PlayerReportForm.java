@@ -24,6 +24,7 @@ public class PlayerReportForm {
         Label lblSelectPlayer = new Label("Select Player:");
         ComboBox<String> cmbPlayer = new ComboBox<>();
         Button btnLoad = new Button("Load Report");
+        Button btnRefresh = new Button("Refresh Players"); // Add Refresh Players button
 
         // Labels to display player details
         Label lblFirstName = new Label("First Name:");
@@ -44,6 +45,7 @@ public class PlayerReportForm {
         gridPane.add(lblSelectPlayer, 0, 0);
         gridPane.add(cmbPlayer, 1, 0);
         gridPane.add(btnLoad, 2, 0);
+        gridPane.add(btnRefresh, 3, 0); // Add Refresh button to the grid
 
         gridPane.add(lblFirstName, 0, 1);
         gridPane.add(txtFirstName, 1, 1);
@@ -79,6 +81,12 @@ public class PlayerReportForm {
 
         // Load players into ComboBox
         loadPlayers(cmbPlayer);
+
+        // Button to refresh players
+        btnRefresh.setOnAction(e -> {
+            loadPlayers(cmbPlayer);
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Players list refreshed successfully!");
+        });
 
         // Load report data when the button is clicked
         btnLoad.setOnAction(e -> {

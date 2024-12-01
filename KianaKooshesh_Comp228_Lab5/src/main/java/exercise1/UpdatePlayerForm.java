@@ -23,6 +23,7 @@ public class UpdatePlayerForm {
 
         Label lblSelectPlayer = new Label("Select Player:");
         ComboBox<String> cmbPlayer = new ComboBox<>();
+        Button btnRefreshPlayers = new Button("Refresh Players");
         Label lblFirstName = new Label("First Name:");
         TextField txtFirstName = new TextField();
         Label lblLastName = new Label("Last Name:");
@@ -41,7 +42,8 @@ public class UpdatePlayerForm {
 
         gridPane.add(lblSelectPlayer, 0, 0);
         gridPane.add(cmbPlayer, 1, 0);
-        gridPane.add(btnLoad, 2, 0);
+        gridPane.add(btnRefreshPlayers, 2, 0); // Add the Refresh Players button
+        gridPane.add(btnLoad, 3, 0);
         gridPane.add(lblFirstName, 0, 1);
         gridPane.add(txtFirstName, 1, 1);
         gridPane.add(lblLastName, 0, 2);
@@ -58,8 +60,14 @@ public class UpdatePlayerForm {
 
         vbox.getChildren().add(gridPane);
 
-        // Load players into ComboBox
+        // Load players into ComboBox initially
         loadPlayers(cmbPlayer);
+
+        // Button to refresh players
+        btnRefreshPlayers.setOnAction(e -> {
+            loadPlayers(cmbPlayer); // Reload players from the database
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Players list refreshed successfully!");
+        });
 
         // Button to load player details
         btnLoad.setOnAction(e -> {
@@ -95,7 +103,7 @@ public class UpdatePlayerForm {
 
             updatePlayerDetails(playerId, firstName, lastName, address, postalCode, province, phoneNumber);
             showAlert(Alert.AlertType.INFORMATION, "Success", "Player details updated successfully!");
-            loadPlayers(cmbPlayer); // Refresh the player list
+            loadPlayers(cmbPlayer); // Refresh the player list after update
         });
 
         return vbox;
